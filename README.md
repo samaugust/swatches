@@ -12,13 +12,9 @@ Stated briefly, the core goal is to create a simple but functional app that has 
 
 The core goals should be completed in full.
 
-## Stretch
+## Stretch Goals
 
 The stretch goals can also be met if you choose to do so. Not completing the stretch goals does not disqualify you in any way nor will it lead to a disadvantage in comparison to other applicants.
-
-## Bonus Stretch
-
-Bonus stretch goals inherit properties of stretch goals but completing these goals will say to us, "I believe the code I've written for the core goals and the stretch goals is production ready".
 
 ## Additional Information
 
@@ -42,29 +38,13 @@ Please do not take more than 4 hours on this challenge. Your time is very valuab
   - Display both the color swatch and the label of the color
   - Ability to select random color and modify view accordingly
   - Clicking swatch changes to color detail view
+  - Make it responsive
 
 ## Stretch Goals
 
-- Design
-  - Make it responsive
-- Functionality
   - Generate color list from a script
-
-## Bonus Stretch Goals
-
-- Design
-
-  - Include interaction design
-  - Add tints/shades in detail view
-
-- Functionality
-
   - Add search functionality
-  - Color generation script guarantees same colors and order
   - Group by color (Make sidebar menu functional)
-
-- Data
-  - Fetch data with GraphQL
 
 ## Deliverables
 
