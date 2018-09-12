@@ -24,7 +24,7 @@ If you'd like to implement additional functionality, or change the functionality
 
 ## Time
 
-Please do not take more than 4 hours on this challenge. Your time is very valuable and we are thankful you're taking the time demonstrate your skills for us.
+Our recommendation is to spend about 2.5 hours on this challenge. You're welcome to spend a little extra time if you wish, but it is not required. Your time is very valuable and we are appreciative you're taking the time to demonstrate your skills for us.
 
 ## Core Goals
 
