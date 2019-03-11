@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-const Swatch = ({ backgroundColor, changeCurrentColor }) => {
+const Swatch = ({ backgroundColor, changeCurrentSwatch }) => {
   return (
-    <div className="swatch-wrapper" onClick={changeCurrentColor}>
+    <div className="swatch-wrapper" onClick={changeCurrentSwatch}>
       <div
         className="swatch-color-box"
         style={{ backgroundColor: `${backgroundColor}` }}

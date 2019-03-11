@@ -3,12 +3,12 @@ import React, { Component } from "react";
 const Pagebar = ({ pages, currentPage, changeCurrentPage }) => {
   const pageNumbers = pages.map((page, i) => {
     return (
-      <p
+      <a
         className={`page-number ${currentPage === i + 1 ? "selected" : ""}`}
         onClick={() => changeCurrentPage(i + 1)}
       >
-        &nbsp; {i + 1}&nbsp;
-      </p>
+        &nbsp; {i + 1} &nbsp;
+      </a>
     );
   });
   return <div className="pagebar-wrapper">{pageNumbers}</div>;

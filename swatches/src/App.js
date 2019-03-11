@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import "./App.css";
 import firebase from "firebase";
 import Swatch from "./components/Swatch";
-import Content from "./components/Content";
+import ListView from "./components/ListView";
+import DetailedView from "./components/DetailedView";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
 import Pagebar from "./components/Pagebar";
@@ -25,7 +26,7 @@ class App extends Component {
   state = {
     pages: [],
     currentPage: 1,
-    currentColor: null
+    selectedSwatch: null
   };
 
   getColors = () => {
@@ -48,22 +49,26 @@ class App extends Component {
   };
 
   getDisplayedSwatches = (pages, currentIndex) => {
-    return pages[currentIndex].map(color => {
+    return pages[currentIndex].map(swatch => {
       return (
         <Swatch
-          backgroundColor={color}
-          changeCurrentColor={() => this.setState({ currentColor: color })}
+          backgroundColor={swatch}
+          changeCurrentSwatch={() => this.changeCurrentSwatch(swatch)}
         />
       );
     });
   };
 
   changeCurrentPage = pageNumber => {
-    this.setState({ currentPage: pageNumber, currentColor: null });
+    this.setState({ currentPage: pageNumber, selectedSwatch: null });
   };
 
-  clearCurrentColor = () => {
-    this.setState({ currentColor: null });
+  changeCurrentSwatch = swatch => {
+    this.setState({ selectedSwatch: swatch });
+  };
+
+  clearSelectedSwatch = () => {
+    this.setState({ selectedSwatch: null });
   };
 
   getRandomColor = () => {
@@ -72,9 +77,9 @@ class App extends Component {
       []
     );
     const randomColorIdx = Math.floor(Math.random() * colors.length);
-    const currentColor = colors[randomColorIdx];
+    const selectedSwatch = colors[randomColorIdx];
     const currentPage = Math.ceil((randomColorIdx + 1) / 12);
-    this.setState({ currentColor, currentPage });
+    this.setState({ selectedSwatch, currentPage });
   };
 
   componentDidMount() {
@@ -82,27 +87,32 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.currentColor);
-    const { pages, currentPage, currentColor } = this.state;
-    let displayedSwatches = pages.length
+    console.log(this.state.selectedSwatch);
+    const { pages, currentPage, selectedSwatch } = this.state;
+    const displayedSwatches = pages.length
       ? this.getDisplayedSwatches(pages, currentPage - 1)
       : null;
+    const content = selectedSwatch ? (
+      <DetailedView
+        selectedSwatch={selectedSwatch}
+        clearSelectedSwatch={this.clearSelectedSwatch}
+      />
+    ) : (
+      <Fragment>
+        <ListView swatches={displayedSwatches} />
+        <Pagebar
+          currentPage={currentPage}
+          pages={pages}
+          changeCurrentPage={this.changeCurrentPage}
+        />
+      </Fragment>
+    );
+
     return (
       <div className="app">
         <Navbar />
         <Sidebar getRandomColor={this.getRandomColor} />
-        <Content
-          swatches={displayedSwatches}
-          currentColor={currentColor}
-          clearCurrentColor={this.clearCurrentColor}
-        />
-        {currentColor ? null : (
-          <Pagebar
-            currentPage={currentPage}
-            pages={pages}
-            changeCurrentPage={this.changeCurrentPage}
-          />
-        )}
+        {content}
       </div>
     );
   }
