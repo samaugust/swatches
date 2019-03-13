@@ -6,7 +6,6 @@ import ListView from "./components/ListView";
 import DetailedView from "./components/DetailedView";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
-import Pagebar from "./components/Pagebar";
 
 const config = {
   apiKey: "AIzaSyBGJkZRL6pmlCvHYf_I6stnqEIw-0tNnIM",
@@ -87,7 +86,6 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.state.selectedSwatch);
     const { pages, currentPage, selectedSwatch } = this.state;
     const displayedSwatches = pages.length
       ? this.getDisplayedSwatches(pages, currentPage - 1)
@@ -98,14 +96,12 @@ class App extends Component {
         clearSelectedSwatch={this.clearSelectedSwatch}
       />
     ) : (
-      <Fragment>
-        <ListView swatches={displayedSwatches} />
-        <Pagebar
-          currentPage={currentPage}
-          pages={pages}
-          changeCurrentPage={this.changeCurrentPage}
-        />
-      </Fragment>
+      <ListView
+        swatches={displayedSwatches}
+        currentPage={currentPage}
+        changeCurrentPage={this.changeCurrentPage}
+        pages={pages}
+      />
     );
 
     return (
