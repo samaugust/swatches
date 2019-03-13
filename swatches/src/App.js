@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import "./App.css";
 import firebase from "firebase";
 import Swatch from "./components/Swatch";

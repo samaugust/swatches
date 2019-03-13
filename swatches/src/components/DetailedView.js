@@ -18,8 +18,10 @@ const DetailedView = ({ selectedSwatch, clearSelectedSwatch }) => {
         </div>
       </div>
       <div className="small-displays">{miniSwatches}</div>
-      <div className="clear-btn" onClick={clearSelectedSwatch}>
-        Clear
+      <div className="clear-btn-wrapper">
+        <div className="clear-btn" onClick={clearSelectedSwatch}>
+          Clear
+        </div>
       </div>
     </div>
   );
