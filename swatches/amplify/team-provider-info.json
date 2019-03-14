@@ -1,0 +1,14 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "swatches-20190313185134-authRole",
+            "UnauthRoleArn": "arn:aws:iam::981445476736:role/swatches-20190313185134-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::981445476736:role/swatches-20190313185134-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "swatches-20190313185134-deployment",
+            "UnauthRoleName": "swatches-20190313185134-unauthRole",
+            "StackName": "swatches-20190313185134",
+            "StackId": "arn:aws:cloudformation:us-east-1:981445476736:stack/swatches-20190313185134/8d7a51c0-45e2-11e9-b34d-0e7a6b775da6"
+        }
+    }
+}

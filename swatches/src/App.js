@@ -6,6 +6,8 @@ import ListView from "./components/ListView";
 import DetailedView from "./components/DetailedView";
 import Sidebar from "./components/Sidebar";
 import Navbar from "./components/Navbar";
+import randomColorsGenerator from "./utils/randomColorsGenerator";
+import paginate from "./utils/paginator";
 
 const config = {
   apiKey: "AIzaSyBGJkZRL6pmlCvHYf_I6stnqEIw-0tNnIM",
@@ -28,29 +30,27 @@ class App extends Component {
     selectedSwatch: null
   };
 
-  getColors = () => {
+  getColorsFromDatabase = () => {
     return firebase
       .database()
       .ref("colors")
       .once("value")
       .then(snapshot => {
-        const pages = this.paginate(snapshot.val());
+        const pages = paginate(snapshot.val());
         this.setState({ pages });
       });
   };
 
-  paginate = arr => {
-    const pages = [];
-    while (arr.length) {
-      pages.push(arr.splice(0, 12));
-    }
-    return pages;
+  getColorsFromScript = () => {
+    const pages = paginate(randomColorsGenerator());
+    this.setState({ pages });
   };
 
   getDisplayedSwatches = (pages, currentIndex) => {
     return pages[currentIndex].map(swatch => {
       return (
         <Swatch
+          key={swatch}
           backgroundColor={swatch}
           changeCurrentSwatch={() => this.changeCurrentSwatch(swatch)}
         />
@@ -81,8 +81,15 @@ class App extends Component {
     this.setState({ selectedSwatch, currentPage });
   };
 
+  /*
+  CHOOSE whether you want to get a fixed set of colors from a database,
+  or a random set (of varying quantity) generated from a script. Just 
+  uncomment one and comment out the other.
+  */
+
   componentDidMount() {
-    this.getColors();
+    //this.getColorsFromDatabase();
+    this.getColorsFromScript();
   }
 
   render() {

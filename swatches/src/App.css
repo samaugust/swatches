@@ -139,6 +139,7 @@ input {
 }
 
 .swatch-wrapper {
+  flex-grow: 1;
   width: 103px;
   height: 120px;
   margin: 25px 17px 0px 17px;
@@ -235,6 +236,7 @@ input {
   height: 100%;
   border: solid 2px #d0d0d0;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .mini-swatch-color-box {
@@ -276,7 +278,7 @@ input {
 
 @media all and (min-width: 480px) and (max-width: 669px) {
   .swatch-wrapper {
-    margin: 10px 6px 10px 19px;
+    margin: 10px 6px 10px 17px;
   }
   .sidebar-wrapper {
     display: flex;
@@ -329,7 +331,7 @@ input {
 }
 @media all and (min-width: 1150px) {
   .swatch-wrapper {
-    margin: 10px 6px 0px 19px;
+    margin: 10px 6px 0px 17px;
   }
   .sidebar-wrapper {
     display: flex;
